@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "841986361808",
+    "project_id": "tesfirebase-d66c0",
+    "storage_bucket": "tesfirebase-d66c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841986361808:android:8ab36e8e6063964495d1d5",
+        "android_client_info": {
+          "package_name": "com.capstone.tesfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841986361808-tnoum4j9dahrhi4cjpabke91rcjqrkn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjxJ0YflcbWBRDy03I7Z83MLxqto7vORs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841986361808-tnoum4j9dahrhi4cjpabke91rcjqrkn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
