@@ -12,69 +12,128 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="50dp">
+        android:padding="16dp">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="100dp"
-            app:layout_constraintHorizontal_bias="0.38"
+            android:id="@+id/imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:contentDescription="icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/logo_fruitmate_full" />
+            app:srcCompat="@drawable/logo_fruitmate_full" />
 
-        <EditText
-            android:id="@+id/inputName"
-            android:background="@drawable/round_edit_text"
-            android:layout_width="300dp"
+        <TextView
+            android:id="@+id/tvRegisterTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview" />
+
+        <TextView
+            android:id="@+id/tvRegisterSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Silakan Isi Data Diri Anda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRegisterTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameEditTextLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:drawableStart="@drawable/baseline_man_24"
+            app:layout_constraintTop_toBottomOf="@+id/tvRegisterSubtitle"
             android:inputType="text"
             android:hint="@string/nama"
-            android:drawablePadding="8dp"/>
+            android:shape="rectangle"
+            android:ems="10"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-        <com.capstone.tesfirebase.customview.EmailEditText
-            android:id="@+id/inputEmail"
-            android:transitionName="inputemail"
-            android:background="@drawable/round_edit_text"
-            android:layout_width="300dp"
+            <com.capstone.tesfirebase.customview.NameEditText
+                android:id="@+id/inputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailEditTextLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="12dp"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputName" />
+            app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout"
+            app:startIconDrawable="@drawable/baseline_email_24">
 
-        <com.capstone.tesfirebase.customview.PasswordEditText
-        android:id="@+id/inputPassword"
-        android:transitionName="inputpassword"
-        android:background="@drawable/round_edit_text"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+            <com.capstone.tesfirebase.customview.EmailEditText
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordEditTextLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/baseline_lock_24">
+
+            <com.capstone.tesfirebase.customview.PasswordEditText
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:passwordToggleEnabled="true"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_register"
-            android:transitionName="button"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/purple_500"
+            android:stateListAnimator="@null"
             android:text="@string/register"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
+            app:layout_constraintVertical_bias="0.333"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -100,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:text="@string/masuk"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:transitionName="text2" />
         </LinearLayout>
@@ -110,11 +169,10 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/btn_register"
-            app:layout_constraintEnd_toEndOf="@id/btn_register"
-            app:layout_constraintStart_toStartOf="@id/btn_register"
-            app:layout_constraintTop_toTopOf="@id/btn_register"
-            android:elevation="2dp"
-            android:visibility="gone"/>
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_register" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
