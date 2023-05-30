@@ -1,4 +1,4 @@
-package com.capstone.tesfirebase.ui.main.profile
+package com.capstone.tesfirebase.ui.main.scan
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

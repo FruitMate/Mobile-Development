@@ -36,8 +36,37 @@ class RegisterActivity : AppCompatActivity() {
             val name = binding.inputName.text.toString()
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
-            if (binding.inputEmail.error == null && binding.inputPassword.error == null
-                    && name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+            if (binding.inputEmail.errorText != null) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan email yang valid.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (binding.inputPassword.errorText != null) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan password yang valid.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (name.isEmpty()) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan nama anda.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (email.isEmpty()) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan email anda.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (password.isEmpty()) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan password anda.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 binding.btnRegister.isEnabled = false
                 binding.tvLogin.isEnabled = false
                 binding.progressBar.visibility = View.VISIBLE
@@ -47,8 +76,6 @@ class RegisterActivity : AppCompatActivity() {
                             // Sign up success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success")
                             val user = auth.currentUser
-                            val userPassword = user?.providerData?.get(1)?.email // Get the password from the user object
-                            Log.d(TAG, "User password: $password")
                             val profileUpdates = UserProfileChangeRequest.Builder()
                                 .setDisplayName(name)
                                 .build()
@@ -57,8 +84,8 @@ class RegisterActivity : AppCompatActivity() {
                                     if (updateProfileTask.isSuccessful) {
                                         Toast.makeText(
                                             baseContext,
-                                            "Authentication success. Welcome ${user?.displayName}",
-                                            Toast.LENGTH_SHORT,
+                                            "Selamat datang, ${user?.displayName}",
+                                            Toast.LENGTH_SHORT
                                         ).show()
                                     } else {
                                         Toast.makeText(
@@ -70,15 +97,16 @@ class RegisterActivity : AppCompatActivity() {
                                     binding.btnRegister.isEnabled = true
                                     binding.tvLogin.isEnabled = true
                                     binding.progressBar.visibility = View.GONE
+                                    updateUI(user)
                                 }
-                            updateUI(user)
+
                         } else {
                             // If sign up fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(
                                 baseContext,
                                 "Authentication failed.",
-                                Toast.LENGTH_SHORT,
+                                Toast.LENGTH_SHORT
                             ).show()
 
                             binding.btnRegister.isEnabled = true
@@ -89,22 +117,8 @@ class RegisterActivity : AppCompatActivity() {
                     }
             }
         }
-    }
 
-    /*
-    public override fun onStart() {
-        super.onStart()
-
-        val firebaseUser = auth.currentUser
-        // Check if user is signed in (non-null) and update UI accordingly.
-        if (firebaseUser == null) {
-            // Not signed in, launch the Login activity
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-            return
-        }
     }
-     */
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
@@ -119,3 +133,18 @@ class RegisterActivity : AppCompatActivity() {
         private const val TAG = "RegisterActivity"
     }
 }
+
+/*
+    public override fun onStart() {
+        super.onStart()
+
+        val firebaseUser = auth.currentUser
+        // Check if user is signed in (non-null) and update UI accordingly.
+        if (firebaseUser == null) {
+            // Not signed in, launch the Login activity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            return
+        }
+    }
+     */

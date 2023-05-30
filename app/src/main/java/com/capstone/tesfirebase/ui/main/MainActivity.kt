@@ -2,9 +2,6 @@ package com.capstone.tesfirebase.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -13,7 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.tesfirebase.R
 import com.capstone.tesfirebase.databinding.ActivityMainBinding
-import com.capstone.tesfirebase.ui.history.HistoryActivity
+import com.capstone.tesfirebase.ui.profile.ProfileActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,22 +36,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_option_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_history -> {
-                val intent = Intent(this, HistoryActivity::class.java)
-                startActivity(intent)
-                return super.onOptionsItemSelected(item)
-            }
+        binding.btnMoveToProfile.setOnClickListener {
+            val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+            startActivity(intent)
         }
-        return super.onOptionsItemSelected(item)
-    }*/
+    }
+
 }

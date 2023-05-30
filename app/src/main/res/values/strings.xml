@@ -16,4 +16,5 @@
     <string name="title_history">History</string>
     <string name="title_scan">Scan</string>
     <string name="name_required_error">Nama Perlu Diisi</string>
+    <string name="cek_kematangan_apel">Cek Kematangan Apel</string>
 </resources>

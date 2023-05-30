@@ -30,10 +30,11 @@ class NameEditText : AppCompatEditText {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         hint = "Nama"
-        error = customError
+        //error = customError
     }
 
     private fun init() {
+        compoundDrawablePadding = 24
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 

@@ -15,6 +15,7 @@ import com.capstone.tesfirebase.R
 
 class PasswordEditText : AppCompatEditText {
     private lateinit var passwordIcon: Drawable
+    var errorText: String? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -47,9 +48,9 @@ class PasswordEditText : AppCompatEditText {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 val length = s.toString().length
                 if (length > 0 && length < 8) {
-                    error = "Minimal 8 karakter"
+                    errorText = "Minimal 8 karakter"
                 } else {
-                    error = null
+                    errorText = null
                 }
             }
             override fun afterTextChanged(s: Editable) {}

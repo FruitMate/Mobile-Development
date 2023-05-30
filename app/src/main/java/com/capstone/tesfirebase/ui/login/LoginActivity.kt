@@ -46,8 +46,32 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
-            if (binding.inputEmail.error == null && binding.inputPassword.error == null
-                    && email.isNotEmpty() && password.isNotEmpty()) {
+
+            if (binding.inputEmail.errorText != null) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan email yang valid.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (binding.inputPassword.errorText != null) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan password yang valid.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (email.isEmpty()) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan email anda.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (password.isEmpty()) {
+                Toast.makeText(
+                    baseContext,
+                    "Silahkan masukkan password anda.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 binding.btnLogin.isEnabled = false
                 binding.tvRegister.isEnabled = false
                 binding.progressBar.visibility = View.VISIBLE
@@ -60,6 +84,11 @@ class LoginActivity : AppCompatActivity() {
                             binding.btnLogin.isEnabled = true
                             binding.tvRegister.isEnabled = true
                             binding.progressBar.visibility = View.GONE
+                            Toast.makeText(
+                                baseContext,
+                                "Selamat datang kembali, ${user?.displayName}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             updateUI(user)
                         } else {
                             // If sign in fails, display a message to the user.
@@ -67,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(
                                 baseContext,
                                 "Authentication failed.",
-                                Toast.LENGTH_SHORT,
+                                Toast.LENGTH_SHORT
                             ).show()
                             binding.btnLogin.isEnabled = true
                             binding.tvRegister.isEnabled = true
@@ -77,7 +106,6 @@ class LoginActivity : AppCompatActivity() {
                     }
             }
         }
-
     }
 
     public override fun onStart() {

@@ -16,6 +16,7 @@ import com.capstone.tesfirebase.R
 
 class EmailEditText : AppCompatEditText {
     private lateinit var emailIcon: Drawable
+    var errorText: String? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -45,9 +46,9 @@ class EmailEditText : AppCompatEditText {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (!s.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(s).matches()){
-                    error = "Email tidak valid"
+                    errorText = "Email tidak valid"
                 } else {
-                    error = null
+                    errorText = null
                 }
             }
             override fun afterTextChanged(s: Editable) {}
