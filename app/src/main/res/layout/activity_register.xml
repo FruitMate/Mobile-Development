@@ -54,15 +54,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvRegisterSubtitle"
             android:inputType="text"
-            android:hint="@string/nama"
             android:shape="rectangle"
             android:ems="10"
-            app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black"
             app:startIconDrawable="@drawable/ic_baseline_person_24">
 
             <com.capstone.tesfirebase.customview.NameEditText
@@ -70,8 +69,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
 
         </com.google.android.material.textfield.TextInputLayout>
 

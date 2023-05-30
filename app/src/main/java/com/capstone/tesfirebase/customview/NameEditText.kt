@@ -29,6 +29,7 @@ class NameEditText : AppCompatEditText {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        hint = "Nama"
         error = customError
     }
 
