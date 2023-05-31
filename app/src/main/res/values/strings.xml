@@ -17,4 +17,5 @@
     <string name="title_scan">Scan</string>
     <string name="name_required_error">Nama Perlu Diisi</string>
     <string name="cek_kematangan_buah">Cek Kematangan Buah</string>
+    <string name="desc_about_app">Aplikasi FruitMate merupakan aplikasi yang bisa membantu mendeteksi tingkat kematangan buah. Dilengkapi dengan fitur tambahan seperti berita, informasi buah, informasi penyimpanan buah, dan perawatan tanaman.</string>
 </resources>
