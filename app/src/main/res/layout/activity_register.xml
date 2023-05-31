@@ -124,7 +124,7 @@
             android:id="@+id/btn_register"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_500"
+            android:backgroundTint="@color/hijau_primer"
             android:stateListAnimator="@null"
             android:text="@string/register"
             android:textAllCaps="false"
@@ -132,7 +132,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
-            app:layout_constraintVertical_bias="0.333"
+            app:layout_constraintVertical_bias="0.234"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
         <LinearLayout
