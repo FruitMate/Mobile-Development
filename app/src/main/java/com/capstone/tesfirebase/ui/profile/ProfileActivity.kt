@@ -20,7 +20,10 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         supportActionBar?.hide()
+        auth = Firebase.auth
+        binding.namaUser.text = auth.currentUser?.displayName
 
         binding.apply {
             btnBack.setOnClickListener{
@@ -38,18 +41,17 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             btnLogOut.setOnClickListener {
-                val auth = Firebase.auth
-
                 val alertDialogBuilder = AlertDialog.Builder(this@ProfileActivity)
                 alertDialogBuilder.setTitle("Log Out")
-                alertDialogBuilder.setMessage("Are you sure you want to log out?")
-                alertDialogBuilder.setPositiveButton("Yes") { dialog, which ->
+                alertDialogBuilder.setMessage("Apakah anda yakin ingin keluar?")
+                alertDialogBuilder.setPositiveButton("Ya") { dialog, which ->
                     auth.signOut()
                     val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()
                 }
-                alertDialogBuilder.setNegativeButton("No") { dialog, which ->
+                alertDialogBuilder.setNegativeButton("Tidak") { dialog, which ->
                     // Do nothing or any other action you want
                 }
 
