@@ -41,6 +41,15 @@
             android:name=".AboutAppActivity"
             android:exported="false" />
         <activity
+            android:name=".FruitInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FruitStorageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FruitTreeCareActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity

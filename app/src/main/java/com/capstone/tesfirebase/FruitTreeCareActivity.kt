@@ -2,13 +2,14 @@ package com.capstone.tesfirebase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.capstone.tesfirebase.databinding.ActivityPenyimpananBuahBinding
+import com.capstone.tesfirebase.databinding.ActivityPerawatanTanamanBinding
 
-class PenyimpananBuahActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPenyimpananBuahBinding
+class FruitTreeCareActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityPerawatanTanamanBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPenyimpananBuahBinding.inflate(layoutInflater)
+        binding = ActivityPerawatanTanamanBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
