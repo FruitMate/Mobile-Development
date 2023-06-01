@@ -37,10 +37,15 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        binding.btnMoveToProfile.setOnClickListener {
-            val intent = Intent(this@MainActivity, ProfileActivity::class.java)
-            startActivity(intent)
+        binding.apply {
+            btnMoveToProfile.setOnClickListener {
+                val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+
         }
+
+
     }
 
 }

@@ -31,6 +31,15 @@
         android:theme="@style/Theme.TesFirebase"
         tools:targetApi="31">
         <activity
+            android:name=".InformasiBuahActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PenyimpananBuahActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PerawatanTanamanActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutAppActivity"
             android:exported="false" />
         <activity
