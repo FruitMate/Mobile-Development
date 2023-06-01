@@ -50,11 +50,13 @@ class HomeFragment : Fragment() {
             textView.text = it
         }*/
 
+        // Spinner untuk memilih buah
         val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, fruits)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.fruitSpinner.adapter = adapter
         binding.fruitSpinner.onItemSelectedListener = onItemSelectedListener
 
+        // Button-button pada horizontalScrollView
         binding.apply {
             fruitInformation.setOnClickListener {
                 // Pindah ke halaman informasi buah
@@ -63,7 +65,7 @@ class HomeFragment : Fragment() {
                 // Pindah ke halaman penyimpanan buah
             }
             fruitTreeCare.setOnClickListener {
-                // Pindah ke halaman
+                // Pindah ke halaman perawatan tanaman
             }
         }
         return root

@@ -41,6 +41,25 @@
             app:layout_constraintTop_toBottomOf="@id/banner" />
 
         <TextView
+            android:id="@+id/news_and_articles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berita dan Artikel"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/banner"
+            app:layout_constraintTop_toBottomOf="@+id/banner" />
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/news_and_articles"
+            app:layout_constraintStart_toStartOf="@+id/banner"/>
+
+        <TextView
             android:id="@+id/choose_your_fruit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +68,7 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="@+id/banner"
-            app:layout_constraintTop_toBottomOf="@+id/banner" />
+            app:layout_constraintTop_toBottomOf="@+id/rv_news" />
 
         <Spinner
             android:id="@+id/fruit_spinner"
