@@ -70,6 +70,7 @@
 
         <Button
             android:id="@+id/btn_upload"
+            android:backgroundTint="@color/hijau_primer"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -78,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_camera"
-            android:text="@string/cek_kematangan_apel"/>
+           android:text="@string/cek_kematangan_buah"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
