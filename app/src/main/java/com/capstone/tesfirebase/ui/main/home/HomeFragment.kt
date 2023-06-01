@@ -10,10 +10,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.capstone.tesfirebase.PenyimpananBuahActivity
-import com.capstone.tesfirebase.PerawatanTanamanActivity
 import com.capstone.tesfirebase.databinding.FragmentHomeBinding
+import com.capstone.tesfirebase.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
@@ -49,22 +50,22 @@ class HomeFragment : Fragment() {
             textView.text = it
         }*/
 
+        // Spinner untuk memilih buah
         val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, fruits)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.fruitSpinner.adapter = adapter
         binding.fruitSpinner.onItemSelectedListener = onItemSelectedListener
 
+        // Button-button pada horizontalScrollView
         binding.apply {
             fruitInformation.setOnClickListener {
                 // Pindah ke halaman informasi buah
             }
             fruitStorage.setOnClickListener {
-                val intent = Intent(requireContext(), PenyimpananBuahActivity::class.java)
-                startActivity(intent)
+                // Pindah ke halaman penyimpanan buah
             }
             fruitTreeCare.setOnClickListener {
-                val intent = Intent(requireContext(), PerawatanTanamanActivity::class.java)
-                startActivity(intent)
+                // Pindah ke halaman perawatan tanaman
             }
         }
         return root

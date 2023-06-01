@@ -31,14 +31,12 @@
         android:theme="@style/Theme.TesFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".InformasiBuahActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PenyimpananBuahActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PerawatanTanamanActivity"
-            android:exported="false" />
+            android:name=".ui.camerax.CameraActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".AboutAppActivity"
             android:exported="false" />
