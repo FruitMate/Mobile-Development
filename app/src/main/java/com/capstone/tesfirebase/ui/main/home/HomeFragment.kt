@@ -1,13 +1,11 @@
 package com.capstone.tesfirebase.ui.main.home
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.tesfirebase.databinding.FragmentHomeBinding
@@ -21,19 +19,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var auth: FirebaseAuth
 
-    private val fruits = arrayOf("Apel")
-    private lateinit var selectedFruit: String
-
-    private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            val selectedItem = parent?.getItemAtPosition(position).toString()
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {
-            // Handle case when nothing is selected
-        }
-    }
-
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -41,30 +28,22 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        /*val textView: TextView = binding.textHome
+        val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }*/
+        }
 
-        val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, fruits)
-        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-        binding.fruitSpinner.adapter = adapter
-        binding.fruitSpinner.onItemSelectedListener = onItemSelectedListener
-
-        binding.apply {
-            fruitInformation.setOnClickListener {
-                // Pindah ke halaman informasi buah
-            }
-            fruitStorage.setOnClickListener {
-                // Pindah ke halaman penyimpanan buah
-            }
-            fruitTreeCare.setOnClickListener {
-                // Pindah ke halaman
-            }
+        auth = Firebase.auth
+        binding.button.setOnClickListener {
+            auth.signOut()
+            requireActivity().startActivity(Intent(requireContext(), LoginActivity::class.java))
+            requireActivity().finish()
         }
         return root
     }
