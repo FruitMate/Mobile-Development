@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.capstone.tesfirebase.AboutAppActivity
 import com.capstone.tesfirebase.EditProfileActivity
+import com.capstone.tesfirebase.PenyimpananBuahActivity
 import com.capstone.tesfirebase.databinding.ActivityProfileBinding
 import com.capstone.tesfirebase.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -20,10 +21,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
-        auth = Firebase.auth
-        binding.namaUser.text = auth.currentUser?.displayName
 
         binding.apply {
             btnBack.setOnClickListener{
@@ -41,17 +39,18 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             btnLogOut.setOnClickListener {
+                val auth = Firebase.auth
+
                 val alertDialogBuilder = AlertDialog.Builder(this@ProfileActivity)
                 alertDialogBuilder.setTitle("Log Out")
-                alertDialogBuilder.setMessage("Apakah anda yakin ingin keluar?")
-                alertDialogBuilder.setPositiveButton("Ya") { dialog, which ->
+                alertDialogBuilder.setMessage("Are you sure you want to log out?")
+                alertDialogBuilder.setPositiveButton("Yes") { dialog, which ->
                     auth.signOut()
                     val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()
                 }
-                alertDialogBuilder.setNegativeButton("Tidak") { dialog, which ->
+                alertDialogBuilder.setNegativeButton("No") { dialog, which ->
                     // Do nothing or any other action you want
                 }
 
