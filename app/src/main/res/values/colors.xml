@@ -7,5 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="hijau_primer">#70C396</color>
+    <color name="hijau_varian">#3B7D55</color>
+    <color name="merah_primer">#FF0000</color>
+    <color name="merah_varian">#990000</color>
 </resources>

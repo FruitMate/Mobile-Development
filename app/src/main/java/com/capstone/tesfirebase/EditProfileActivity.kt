@@ -10,6 +10,7 @@ class EditProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         supportActionBar?.hide()
         binding.apply {
             btnBack.setOnClickListener {
