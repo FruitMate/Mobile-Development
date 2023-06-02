@@ -1,4 +1,4 @@
-package com.capstone.tesfirebase
+package com.capstone.tesfirebase.ui.fruit.information
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -7,7 +7,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".FruitStorageActivity">
+    tools:context=".ui.fruit.storage.FruitStorageActivity">
 
     <ImageButton
         android:id="@+id/btn_back"

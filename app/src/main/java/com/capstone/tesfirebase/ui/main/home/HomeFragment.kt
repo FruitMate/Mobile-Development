@@ -10,14 +10,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.capstone.tesfirebase.FruitInformationActivity
-import com.capstone.tesfirebase.FruitStorageActivity
-import com.capstone.tesfirebase.FruitTreeCareActivity
+import com.capstone.tesfirebase.ui.fruit.information.FruitInformationActivity
+import com.capstone.tesfirebase.ui.fruit.storage.FruitStorageActivity
+import com.capstone.tesfirebase.ui.fruit.treecare.FruitTreeCareActivity
 import com.capstone.tesfirebase.databinding.FragmentHomeBinding
-import com.capstone.tesfirebase.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
