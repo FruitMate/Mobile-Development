@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tesfirebase.databinding.ActivityEditProfileBinding
-import com.capstone.tesfirebase.ui.login.LoginActivity
 import com.capstone.tesfirebase.ui.profile.ProfileActivity
 import com.capstone.tesfirebase.ui.profile.changeemail.ChangeEmailActivity
 import com.capstone.tesfirebase.ui.profile.changenumber.ChangeNumberActivity
@@ -38,6 +37,7 @@ class EditProfileActivity : AppCompatActivity() {
             btnBack.setOnClickListener {
                 onBackPressed()
             }
+            userEmail.text = user?.email
             btnSave.setOnClickListener {
                 val newName = inputName.text.toString().trim()
                 val isNameChanged = newName != initialName
