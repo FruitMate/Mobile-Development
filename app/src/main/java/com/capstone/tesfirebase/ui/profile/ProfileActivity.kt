@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import com.capstone.tesfirebase.AboutAppActivity
-import com.capstone.tesfirebase.EditProfileActivity
+import com.capstone.tesfirebase.ui.profile.aboutapp.AboutAppActivity
+import com.capstone.tesfirebase.ui.profile.editprofile.EditProfileActivity
 import com.capstone.tesfirebase.databinding.ActivityProfileBinding
 import com.capstone.tesfirebase.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth

@@ -1,14 +1,16 @@
-package com.capstone.tesfirebase
+package com.capstone.tesfirebase.ui.profile.changepassword
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.capstone.tesfirebase.databinding.ActivityEditProfileBinding
+import com.capstone.tesfirebase.R
+import com.capstone.tesfirebase.databinding.ActivityChangePasswordBinding
 
-class EditProfileActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEditProfileBinding
+class ChangePasswordActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityChangePasswordBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditProfileBinding.inflate(layoutInflater)
+        binding = ActivityChangePasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
