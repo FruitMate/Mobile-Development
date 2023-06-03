@@ -6,8 +6,8 @@
         <item name="colorPrimaryVariant">@color/hijau_varian</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/merah_primer</item>
-        <item name="colorSecondaryVariant">@color/merah_varian</item>
+        <item name="colorSecondary">@color/kuning_primer</item>
+        <item name="colorSecondaryVariant">@color/kuning_varian</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

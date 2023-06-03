@@ -3,6 +3,7 @@ package com.capstone.tesfirebase.ui.profile.editprofile
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tesfirebase.databinding.ActivityEditProfileBinding
@@ -42,6 +43,8 @@ class EditProfileActivity : AppCompatActivity() {
                 val isNameChanged = newName != initialName
 
                 if (isNameChanged) {
+                    btnSave.visibility = View.GONE
+                    progressBar.visibility = View.VISIBLE
                     val profileUpdates = userProfileChangeRequest {
                         displayName = newName
                     }
@@ -53,6 +56,8 @@ class EditProfileActivity : AppCompatActivity() {
                                     "Data berhasil disimpan",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                btnSave.visibility = View.VISIBLE
+                                progressBar.visibility = View.GONE
                                 val intent = Intent(this@EditProfileActivity, ProfileActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)
@@ -64,6 +69,8 @@ class EditProfileActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 Log.d("Update Profile", "updateProfileFailed: ${taskProfile.exception}")
+                                btnSave.visibility = View.VISIBLE
+                                progressBar.visibility = View.GONE
                             }
                         }
                 } else {

@@ -10,6 +10,7 @@
 
     <color name="hijau_primer">#70C396</color>
     <color name="hijau_varian">#3B7D55</color>
-    <color name="merah_primer">#FF0000</color>
-    <color name="merah_varian">#990000</color>
+    <color name="kuning_primer">#FFD700</color>
+    <color name="kuning_varian">#FFC200</color>
+
 </resources>
