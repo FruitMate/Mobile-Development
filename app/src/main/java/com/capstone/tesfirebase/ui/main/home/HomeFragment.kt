@@ -10,23 +10,28 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.capstone.tesfirebase.data.repository.News
+import com.capstone.tesfirebase.data.repository.NewsData
 import com.capstone.tesfirebase.ui.fruit.information.FruitInformationActivity
 import com.capstone.tesfirebase.ui.fruit.storage.FruitStorageActivity
 import com.capstone.tesfirebase.ui.fruit.treecare.FruitTreeCareActivity
 import com.capstone.tesfirebase.databinding.FragmentHomeBinding
-import com.google.firebase.auth.FirebaseAuth
+
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private lateinit var auth: FirebaseAuth
+
+    private lateinit var listNews: ArrayList<News>
 
     private val fruits = arrayOf("Apel")
     private lateinit var selectedFruit: String
 
     private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            val selectedItem = parent?.getItemAtPosition(position).toString()
+            selectedFruit = parent?.getItemAtPosition(position).toString()
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -49,6 +54,16 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }*/
+
+        // Set up news adapter for rvNews
+        val rvNews = binding.rvNews
+        rvNews.layoutManager = LinearLayoutManager(requireActivity(), RecyclerView.HORIZONTAL, false)
+        rvNews.setHasFixedSize(true)
+        listNews = ArrayList()
+        listNews.addAll(NewsData.newsList)
+
+        val newsAdapter = NewsAdapter(listNews)
+        rvNews.adapter = newsAdapter
 
         // Spinner untuk memilih buah
         val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, fruits)

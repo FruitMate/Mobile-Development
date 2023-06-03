@@ -6,6 +6,8 @@
     tools:context="com.capstone.tesfirebase.ui.register.RegisterActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_scroll"
+    android:scrollbars="none"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
