@@ -16,6 +16,12 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var auth: FirebaseAuth
 
+    override fun onResume() {
+        super.onResume()
+        auth = Firebase.auth
+        binding.namaUser.text = auth.currentUser?.displayName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)

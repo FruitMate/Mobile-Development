@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tesfirebase.databinding.ActivityEditProfileBinding
 import com.capstone.tesfirebase.ui.profile.ProfileActivity
 import com.capstone.tesfirebase.ui.profile.changeemail.ChangeEmailActivity
-import com.capstone.tesfirebase.ui.profile.changenumber.ChangeNumberActivity
 import com.capstone.tesfirebase.ui.profile.changepassword.ChangePasswordActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -58,10 +57,6 @@ class EditProfileActivity : AppCompatActivity() {
                                 ).show()
                                 btnSave.visibility = View.VISIBLE
                                 progressBar.visibility = View.GONE
-                                val intent = Intent(this@EditProfileActivity, ProfileActivity::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                                startActivity(intent)
-                                finish()
                             } else {
                                 Toast.makeText(
                                     baseContext,
@@ -86,8 +81,7 @@ class EditProfileActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             numberLayout.setOnClickListener {
-                val intent = Intent(this@EditProfileActivity, ChangeNumberActivity::class.java)
-                startActivity(intent)
+
             }
             passwordLayout.setOnClickListener {
                 val intent = Intent(this@EditProfileActivity, ChangePasswordActivity::class.java)
