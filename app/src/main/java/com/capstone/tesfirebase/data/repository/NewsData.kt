@@ -21,6 +21,12 @@ object NewsData {
             "Bukan Kopi, Makan Buah Apel Setiap Bangun Tidur di Pagi Hari Cegah Diabetes",
             R.drawable.news3,
             "https://www.suara.com/health/2022/09/02/122645/bukan-kopi-makan-buah-apel-setiap-bangun-tidur-di-pagi-hari-cegah-diabetes",
+        ),
+        News(
+            "4",
+            "Jumlah Kalori hingga Nutrisi dalam Sebuah Apel, Cocok untuk Diet",
+            R.drawable.news4,
+            "https://www.detik.com/sulsel/berita/d-6575764/jumlah-kalori-hingga-nutrisi-dalam-sebuah-apel-cocok-untuk-diet"
         )
     )
 }
