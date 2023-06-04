@@ -24,15 +24,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/logo_fruitmate_partial"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/logo_fruitmate_partial" />
 
     <TextView
         android:id="@+id/nama_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textSize="16sp"
+        android:textSize="22sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         tools:text="Peter Parker"
         app:layout_constraintEnd_toEndOf="parent"

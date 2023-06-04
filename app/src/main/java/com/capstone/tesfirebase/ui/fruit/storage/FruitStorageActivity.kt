@@ -7,6 +7,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 
 class FruitStorageActivity : AppCompatActivity() {
+    private lateinit var player: ExoPlayer
     companion object {
         const val URL_VIDEO = "https://github.com/FruitMate/Mobile-Development/raw/branch1/asset/Tips%20Menyimpan%20Apel%20Agar%20Tahan%20Lama%20%26%20Tidak%20Cokelat.mp4"
     }
@@ -24,10 +25,16 @@ class FruitStorageActivity : AppCompatActivity() {
             }
         }
 
-        val player = ExoPlayer.Builder(this).build()
+        player = ExoPlayer.Builder(this).build()
         viewBinding.playerView.player = player
         val mediaItem = MediaItem.fromUri(URL_VIDEO)
         player.setMediaItem(mediaItem)
         player.prepare()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        player.stop()
+        player.release()
     }
 }
