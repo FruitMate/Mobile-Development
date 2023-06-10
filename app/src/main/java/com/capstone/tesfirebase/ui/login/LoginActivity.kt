@@ -79,26 +79,17 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = auth.currentUser
-                            user?.getIdToken(false)
-                                ?.addOnCompleteListener { tokenTask ->
-                                    if (tokenTask.isSuccessful) {
-                                        val idToken = tokenTask.result?.token
-                                        Log.d(TAG, "ID Token: $idToken")
-                                    } else {
-                                        Log.d(TAG, "Error retrieving ID token: ${tokenTask.exception}")
-                                    }
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmailAndPassword:success")
-                                    binding.btnLogin.isEnabled = true
-                                    binding.tvRegister.isEnabled = true
-                                    binding.progressBar.visibility = View.GONE
-                                    Toast.makeText(
-                                        baseContext,
-                                        "Selamat datang kembali, ${user.displayName}",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    updateUI(user)
-                                }
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmailAndPassword:success")
+                            binding.btnLogin.isEnabled = true
+                            binding.tvRegister.isEnabled = true
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(
+                                baseContext,
+                                "Selamat datang kembali, ${user?.displayName}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            updateUI(user)
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.d(TAG, "signInWithEmail:failure", task.exception)
