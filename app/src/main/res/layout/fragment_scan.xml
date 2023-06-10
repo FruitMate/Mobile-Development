@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/iv_preview"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="350dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/apple_127"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +81,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_camera"
-           android:text="@string/cek_kematangan_buah"/>
+            android:text="@string/cek_kematangan_buah"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/btn_upload"
+            app:layout_constraintEnd_toEndOf="@id/btn_upload"
+            app:layout_constraintStart_toStartOf="@id/btn_upload"
+            app:layout_constraintTop_toTopOf="@id/btn_upload"
+            android:visibility="gone"
+            android:elevation="2dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
