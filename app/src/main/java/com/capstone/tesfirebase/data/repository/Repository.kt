@@ -45,14 +45,14 @@ class Repository private constructor(
                     }
                 } else {
                     uploadResponseStatus.postValue(
-                        ScanAppleResponse(404, "YNTKTS", "Terjadi Error")
+                        ScanAppleResponse(404, "YNTKTS", "Terjadi Error ${response.message()}")
                     )
                 }
             }
 
             override fun onFailure(call: Call<ScanAppleResponse>, t: Throwable) {
                 uploadResponseStatus.postValue(
-                    ScanAppleResponse(404, "YNTKTS", "Terjadi Error")
+                    ScanAppleResponse(404, "YNTKTS", "Terjadi Error $t")
                 )
             }
         })

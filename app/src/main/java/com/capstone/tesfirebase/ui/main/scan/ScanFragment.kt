@@ -51,7 +51,7 @@ class ScanFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //scanViewModel = obtainViewModel()
+        scanViewModel = obtainViewModel()
 
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -71,8 +71,7 @@ class ScanFragment : Fragment() {
 
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnCamera.setOnClickListener { startCameraX()}
-        // Pending dulu nunggu Api nya bisa jalan
-        /*binding.btnUpload.setOnClickListener {
+        binding.btnUpload.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
             binding.btnUpload.isEnabled = false
             binding.btnGallery.isEnabled = false
@@ -108,7 +107,7 @@ class ScanFragment : Fragment() {
                     }
                 }
             }
-        }*/
+        }
         return root
     }
 
