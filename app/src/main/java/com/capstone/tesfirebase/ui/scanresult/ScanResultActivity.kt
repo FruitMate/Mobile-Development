@@ -29,6 +29,6 @@ class ScanResultActivity : AppCompatActivity() {
                 binding.ivScanImage.setImageBitmap(BitmapFactory.decodeFile(file.path))
             }
         }
-
+        binding.classificationResult.text = prediction
     }
 }
