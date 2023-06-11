@@ -72,40 +72,44 @@ class ScanFragment : Fragment() {
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnCamera.setOnClickListener { startCameraX()}
         binding.btnUpload.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.btnUpload.isEnabled = false
-            binding.btnGallery.isEnabled = false
-            binding.btnCamera.isEnabled = false
             if (getFile != null) {
-                val file = reduceFileImage(getFile as File)
-                val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-                val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                    "image",
-                    file.name,
-                    requestImageFile
-                )
-                val email = user?.email?.toRequestBody("text/plain".toMediaType())
-                email?.let { emailRequestBody ->
-                    scanViewModel.uploadImage(imageMultipart, emailRequestBody).observe(requireActivity()) {
-                        if (it.code == 200) {
-                            binding.progressBar.visibility = View.GONE
-                            binding.btnUpload.isEnabled = true
-                            binding.btnGallery.isEnabled = true
-                            binding.btnCamera.isEnabled = true
-                            Toast.makeText(requireActivity(), "${it.message}", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(requireActivity(), ScanResultActivity::class.java)
-                            intent.putExtra("currentPhotoPath", currentPhotoPath)
-                            intent.putExtra("prediction", it.prediction)
-                            startActivity(intent)
-                        } else {
-                            binding.progressBar.visibility = View.GONE
-                            binding.btnUpload.isEnabled = true
-                            binding.btnGallery.isEnabled = true
-                            binding.btnCamera.isEnabled = true
-                            Toast.makeText(requireActivity(), "${it.message}", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.VISIBLE
+                binding.btnUpload.isEnabled = false
+                binding.btnGallery.isEnabled = false
+                binding.btnCamera.isEnabled = false
+                if (getFile != null) {
+                    val file = reduceFileImage(getFile as File)
+                    val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                    val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                        "image",
+                        file.name,
+                        requestImageFile
+                    )
+                    val email = user?.email?.toRequestBody("text/plain".toMediaType())
+                    email?.let { emailRequestBody ->
+                        scanViewModel.uploadImage(imageMultipart, emailRequestBody).observe(requireActivity()) {
+                            if (it.code == 200) {
+                                binding.progressBar.visibility = View.GONE
+                                binding.btnUpload.isEnabled = true
+                                binding.btnGallery.isEnabled = true
+                                binding.btnCamera.isEnabled = true
+                                Toast.makeText(requireActivity(), "${it.message}", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(requireActivity(), ScanResultActivity::class.java)
+                                intent.putExtra("currentPhotoPath", currentPhotoPath)
+                                intent.putExtra("prediction", it.prediction)
+                                startActivity(intent)
+                            } else {
+                                binding.progressBar.visibility = View.GONE
+                                binding.btnUpload.isEnabled = true
+                                binding.btnGallery.isEnabled = true
+                                binding.btnCamera.isEnabled = true
+                                Toast.makeText(requireActivity(), "${it.message}", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 }
+            } else {
+                Toast.makeText(requireActivity(), "Mohon Masukkan gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
             }
         }
         return root
