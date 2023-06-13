@@ -3,6 +3,7 @@ package com.capstone.tesfirebase.ui.scanresult
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.tesfirebase.R
 import com.capstone.tesfirebase.databinding.ActivityScanResultBinding
 import java.io.File
 
@@ -30,5 +31,17 @@ class ScanResultActivity : AppCompatActivity() {
             }
         }
         binding.classificationResult.text = prediction
+
+        if (prediction == "ripe") {
+            binding.textView.text = getString(R.string.desc_buah_matang)
+        }
+
+        else if (prediction == "overripe"){
+            binding.textView.text = getString(R.string.desc_buah_busuk)
+        }
+
+        else {binding.textView.text = getString(R.string.desc_buah_belum_matang)
+
+        }
     }
 }
