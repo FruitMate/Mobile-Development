@@ -1,5 +1,6 @@
 package com.capstone.tesfirebase.ui.main.history
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,12 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.capstone.tesfirebase.data.response.HistoryResponse
+import com.capstone.tesfirebase.data.response.HistoryItem
 import com.capstone.tesfirebase.databinding.ItemHistoryBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
-class HistoryAdapter(private val listHistory: ArrayList<HistoryResponse>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewModel>() {
+class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewModel>() {
 
     class HistoryViewModel(val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -25,8 +28,13 @@ class HistoryAdapter(private val listHistory: ArrayList<HistoryResponse>) : Recy
     override fun onBindViewHolder(holder: HistoryViewModel, position: Int) {
         val currentItem = listHistory[position]
 
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val parsedDate = currentItem.timestamp?.let { inputFormat.parse(it) }
+        val formattedDate = parsedDate?.let { outputFormat.format(it) }
+
         // Bind data to the view holder's views
-        holder.binding.tvCreated.text = currentItem.timestamp
+        holder.binding.tvCreated.text = formattedDate
         holder.binding.tvClassification.text = currentItem.classification_result
 
 
@@ -57,7 +65,13 @@ class HistoryAdapter(private val listHistory: ArrayList<HistoryResponse>) : Recy
                     return false
                 }
             })
-            .into(holder.binding.ivImagestory)
+            .into(holder.binding.ivImagehistory)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailHistoryActivity::class.java)
+            intent.putExtra("imageUrl", currentItem.image_url)
+            intent.putExtra("prediction", currentItem.classification_result)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

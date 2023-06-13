@@ -58,7 +58,7 @@
         android:text="Kematangan Buah"/>
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_prediction"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -78,10 +78,10 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/iv_imagebuah"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_prediction" />
 
     <TextView
-        android:id="@+id/tv_postDescription"
+        android:id="@+id/tv_fruitDescription"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

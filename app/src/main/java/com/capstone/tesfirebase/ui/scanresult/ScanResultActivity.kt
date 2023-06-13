@@ -40,8 +40,8 @@ class ScanResultActivity : AppCompatActivity() {
             binding.textView.text = getString(R.string.desc_buah_busuk)
         }
 
-        else {binding.textView.text = getString(R.string.desc_buah_belum_matang)
-
+        else {
+            binding.textView.text = getString(R.string.desc_buah_belum_matang)
         }
     }
 }

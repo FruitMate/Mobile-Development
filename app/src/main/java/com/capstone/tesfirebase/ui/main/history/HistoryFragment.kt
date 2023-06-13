@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone.tesfirebase.data.response.HistoryResponse
 import com.capstone.tesfirebase.databinding.FragmentHistoryBinding
+import com.capstone.tesfirebase.ui.ViewModelFactory
 
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var historyViewModel: HistoryViewModel
     private lateinit var historyAdapter: HistoryAdapter
-    private val historyList = ArrayList<HistoryResponse>()
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -24,29 +25,21 @@ class HistoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        historyViewModel = obtainViewModel()
 
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Create the adapter
-        historyAdapter = HistoryAdapter(historyList)
-
+        // Get data from viewmodel
+        historyViewModel.getHistory().observe(requireActivity()) {
+            if (it != null) {
+                // Create the adapter
+                historyAdapter = HistoryAdapter(it)
+                binding.rvStorymain.adapter = historyAdapter
+            }
+        }
         // Set up RecyclerView
         binding.rvStorymain.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvStorymain.adapter = historyAdapter
-
-        // Example data
-        val exampleHistory = listOf(
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "overripe", "2023-06-07 15:43:59", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg"),
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "unripe", "2023-06-07 15:56:07", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg"),
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "ripe", "2023-06-07 15:22:19", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg"),
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "ripe", "2023-06-07 15:40:43", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg")
-        )
-//        // Add example data to the history list
-        historyList.addAll(exampleHistory)
-
-        // Notify the adapter that the data has changed
-        historyAdapter.notifyDataSetChanged()
 
         return root
     }
@@ -54,5 +47,10 @@ class HistoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun obtainViewModel(): HistoryViewModel {
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        return ViewModelProvider(requireActivity(), factory)[HistoryViewModel::class.java]
     }
 }

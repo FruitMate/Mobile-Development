@@ -1,8 +1,11 @@
 package com.capstone.tesfirebase.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.capstone.tesfirebase.data.api.ApiService
+import com.capstone.tesfirebase.data.response.HistoryItem
+import com.capstone.tesfirebase.data.response.HistoryResponse1
 import com.capstone.tesfirebase.data.response.ScanAppleResponse
 import com.google.firebase.auth.FirebaseAuth
 import okhttp3.MultipartBody
@@ -21,6 +24,27 @@ class Repository private constructor(
                 val success = task.isSuccessful
                 callback(success)
             }
+    }
+
+    fun getHistory() : LiveData<List<HistoryItem>> {
+        val email = auth.currentUser!!.email
+        val historyResponseStatus = MutableLiveData<List<HistoryItem>>()
+        val client = apiService.getHistory(email!!)
+        client.enqueue(object : Callback<HistoryResponse1> {
+            override fun onResponse(
+                call: Call<HistoryResponse1>,
+                response: Response<HistoryResponse1>
+            ) {
+                if (response.isSuccessful) {
+                    val listHistory = response.body()?.data
+                    historyResponseStatus.postValue(listHistory!!)
+                }
+            }
+            override fun onFailure(call: Call<HistoryResponse1>, t: Throwable) {
+                Log.d("Get History", "Gagal mendapat History")
+            }
+        })
+        return historyResponseStatus
     }
 
     fun uploadImage(
