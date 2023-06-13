@@ -1,55 +1,61 @@
 package com.capstone.tesfirebase.ui.main.history
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone.tesfirebase.data.response.HistoryResponse
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.capstone.tesfirebase.R
 import com.capstone.tesfirebase.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
 
-    private lateinit var historyAdapter: HistoryAdapter
-    private val historyList = ArrayList<HistoryResponse>()
-
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val dashboardViewModel =
+            ViewModelProvider(this).get(HistoryViewModel::class.java)
 
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Create the adapter
-        historyAdapter = HistoryAdapter(historyList)
+        val textView: TextView = binding.textHistory
+        dashboardViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
 
-        // Set up RecyclerView
-        binding.rvStorymain.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvStorymain.adapter = historyAdapter
-
-        // Example data
-        val exampleHistory = listOf(
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "overripe", "2023-06-07 15:43:59", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg"),
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "unripe", "2023-06-07 15:56:07", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg"),
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "ripe", "2023-06-07 15:22:19", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg"),
-            HistoryResponse("iYqXpePAHAd97Rwum1lNMPpTk111", "ripe", "2023-06-07 15:40:43", "https://cdn-2.tstatic.net/pontianak/foto/bank/images/jelaskan-proses-pematangan-apel-tempat-tumbuh-apel-dan-tekstur-kulit-apel.jpg")
-        )
-//        // Add example data to the history list
-        historyList.addAll(exampleHistory)
-
-        // Notify the adapter that the data has changed
-        historyAdapter.notifyDataSetChanged()
-
+        // Tampilkan pop-up pengembangan
+        showDevelopmentPopup()
         return root
     }
+    private fun showDevelopmentPopup() {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setMessage("Halaman sedang dalam pengembangan")
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+        val dialog = dialogBuilder.create()
+        dialog.show()
+        navigateToHome()
+    }
+
+    private fun navigateToHome() {
+        val navController = findNavController()
+        navController.navigate(R.id.navigation_home)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
