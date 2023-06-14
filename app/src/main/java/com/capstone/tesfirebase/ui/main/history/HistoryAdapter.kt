@@ -1,5 +1,6 @@
 package com.capstone.tesfirebase.ui.main.history
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -16,7 +17,7 @@ import com.capstone.tesfirebase.databinding.ItemHistoryBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewModel>() {
+class HistoryAdapter(private var listHistory: List<HistoryItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewModel>() {
 
     class HistoryViewModel(val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -85,5 +86,11 @@ class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.
 
     override fun getItemCount(): Int {
         return listHistory.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newData: List<HistoryItem>) {
+        listHistory = newData
+        notifyDataSetChanged()
     }
 }

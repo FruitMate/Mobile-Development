@@ -1,6 +1,5 @@
 package com.capstone.tesfirebase.ui.main.history
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +18,6 @@ class HistoryFragment : Fragment() {
     private lateinit var historyViewModel: HistoryViewModel
     private lateinit var historyAdapter: HistoryAdapter
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,12 +28,19 @@ class HistoryFragment : Fragment() {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // Create the adapter
+        historyAdapter = HistoryAdapter(emptyList())
+        binding.rvStorymain.adapter = historyAdapter
+
         // Get data from viewmodel
-        historyViewModel.getHistory().observe(requireActivity()) {
-            if (it != null) {
-                // Create the adapter
-                historyAdapter = HistoryAdapter(it)
-                binding.rvStorymain.adapter = historyAdapter
+        historyViewModel.getHistory().observe(requireActivity()) { historyList ->
+            if (historyList.isNullOrEmpty()) {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.rvStorymain.visibility = View.GONE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.rvStorymain.visibility = View.VISIBLE
+                historyAdapter.updateData(historyList)
             }
         }
         // Set up RecyclerView
