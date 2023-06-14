@@ -35,7 +35,7 @@ class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.
 
         // Bind data to the view holder's views
         holder.binding.tvCreated.text = formattedDate
-        holder.binding.tvClassification.text = currentItem.classification_result
+        holder.binding.tvClassification.text = transformPrediction(currentItem.classification_result)
 
 
         // Load image using Glide
@@ -69,8 +69,17 @@ class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailHistoryActivity::class.java)
             intent.putExtra("imageUrl", currentItem.image_url)
-            intent.putExtra("prediction", currentItem.classification_result)
+            intent.putExtra("prediction", transformPrediction(currentItem.classification_result))
             holder.itemView.context.startActivity(intent)
+        }
+    }
+
+    fun transformPrediction(prediction: String?): String? {
+        return when (prediction) {
+            "ripe" -> "Matang"
+            "overripe" -> "Busuk"
+            "unripe" -> "Belum Matang"
+            else -> prediction // Mengembalikan hasil prediksi asli jika tidak ada transformasi yang cocok
         }
     }
 

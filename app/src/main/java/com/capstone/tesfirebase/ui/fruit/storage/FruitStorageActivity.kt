@@ -9,7 +9,7 @@ import com.google.android.exoplayer2.MediaItem
 class FruitStorageActivity : AppCompatActivity() {
     private lateinit var player: ExoPlayer
     companion object {
-        const val URL_VIDEO = "https://github.com/FruitMate/Mobile-Development/raw/branch1/asset/Tips%20Menyimpan%20Apel%20Agar%20Tahan%20Lama%20%26%20Tidak%20Cokelat.mp4"
+        const val URL_VIDEO = "https://drive.google.com/uc?export=download&id=1HpVGG9fBAnQuKHWWh4ebOS1e_LLtnSpl"
     }
     private val viewBinding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityFruitStorageBinding.inflate(layoutInflater)
