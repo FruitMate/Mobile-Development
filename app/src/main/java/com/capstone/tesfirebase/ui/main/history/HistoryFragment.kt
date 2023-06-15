@@ -34,9 +34,13 @@ class HistoryFragment : Fragment() {
 
         // Get data from viewmodel
         historyViewModel.getHistory().observe(requireActivity()) { historyList ->
-            if (historyList.isNullOrEmpty()) {
+            if (historyList == null) {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.rvStorymain.visibility = View.GONE
+            } else if (historyList.isEmpty()) {
+                binding.progressBar.visibility = View.GONE
+                binding.rvStorymain.visibility = View.VISIBLE
+                binding.historyEmpty.visibility = View.VISIBLE
             } else {
                 binding.progressBar.visibility = View.GONE
                 binding.rvStorymain.visibility = View.VISIBLE
