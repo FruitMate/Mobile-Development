@@ -44,3 +44,6 @@ The following are the team members involved in the development of this project:
 * Kotlin Plugin
 * Gradle
 * Android Device or Android Emulator
+
+## Apk File Download
+https://github.com/FruitMate/Mobile-Development/raw/main/app-debug.apk
