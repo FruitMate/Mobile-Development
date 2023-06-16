@@ -40,7 +40,9 @@ class ScanResultActivity : AppCompatActivity() {
             }
         }
         binding.classificationResult.text = transformPrediction(prediction)
+        binding.textView.text = transformPrediction(prediction)
 
+        // perubahan prediction ke bahasa
         if (prediction == "Matang") {
             binding.textView.text = getString(R.string.desc_buah_matang)
         }
