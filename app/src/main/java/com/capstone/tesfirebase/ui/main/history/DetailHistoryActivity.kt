@@ -25,9 +25,22 @@ class DetailHistoryActivity : AppCompatActivity() {
                 .load(imageUrl)
                 .into(ivImagebuah)
             tvPrediction.text = prediction
-            if (prediction == "ripe") {
+
+            fun transformPrediction(prediction: String?): String? {
+                return when (prediction) {
+                    "ripe" -> "Matang"
+                    "overripe" -> "Busuk"
+                    "unripe" -> "Belum Matang"
+                    else -> prediction // Mengembalikan hasil prediksi asli jika tidak ada transformasi yang cocok
+                }
+            }
+
+            binding.tvFruitDescription.text = transformPrediction(prediction)
+
+            // perubahan prediction ke bahasa
+            if (prediction == "Matang") {
                 tvFruitDescription.text = getString(R.string.desc_buah_matang)
-            } else if (prediction == "overripe"){
+            } else if (prediction == "Busuk"){
                 tvFruitDescription.text = getString(R.string.desc_buah_busuk)
             } else {
                 tvFruitDescription.text = getString(R.string.desc_buah_belum_matang)
